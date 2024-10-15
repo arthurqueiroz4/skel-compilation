@@ -1,3 +1,5 @@
+local reverse_table = require("skel-compilation.utils").reverse_table
+
 local M = {}
 
 local function find_csproj_dir_recursive(dir, dirs_traversed)
@@ -16,14 +18,6 @@ local function find_csproj_dir_recursive(dir, dirs_traversed)
 
 	local parent_dir = vim.fn.fnamemodify(dir, ":h")
 	return find_csproj_dir_recursive(parent_dir, dirs_traversed)
-end
-
-local function reverse_table(t)
-	local reversed = {}
-	for i = #t, 1, -1 do
-		table.insert(reversed, t[i])
-	end
-	return reversed
 end
 
 local function namespace()
