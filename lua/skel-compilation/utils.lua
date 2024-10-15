@@ -2,15 +2,16 @@ local M = {}
 
 M.concat = function(...)
 	local result = {}
-	local args = { ... }
-
-	for _, t in ipairs(args) do
-		for i = 1, #t do
-			result[#result + 1] = t[i]
+	for _, tbl in ipairs({ ... }) do
+		for key, value in pairs(tbl) do
+			result[key] = value
 		end
 	end
-
 	return result
+end
+
+M.is_upper = function(char)
+	return char == string.upper(char) and char ~= string.lower(char)
 end
 
 return M

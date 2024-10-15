@@ -1,15 +1,14 @@
-local skel = require("skel-nvim")
-local skelconf = require("conf.skeleton")
-local utils = require("utils")
+local skelconf = require("skel-compilation.conf.skeleton")
+local utils = require("skel-compilation.utils")
 
 local main = {}
 
 function main.setup()
-	local cs_subs = require("lang.csharp").get_substitutions()
-	local java_subs = require("lang.java").get_substitutions()
+	local shared_subs = require("skel-compilation.lang.shared").get_substitutions()
 
-	local subs = utils.concant(cs_subs, java_subs)
-	skelconf.configurate(skel, subs)
+	local subs = utils.concat(shared_subs)
+
+	skelconf.configure(subs)
 end
 
 return main
