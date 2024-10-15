@@ -1,0 +1,3 @@
+local java = {}
+
+return java
